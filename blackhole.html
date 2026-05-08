@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Astrofysikk - Svarte Hull</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+
+        :root {
+            
+        }
         * {
             margin: 0;
             padding: 0;
@@ -16,8 +21,73 @@
             text-decoration: none;
             color: inherit;
         }
+        
+        nav {
+            color: white;
+            display: flex;
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            align-items: center;
+            justify-content: space-between;
+            background-color: black;
+            padding: 1rem 2rem;
+        
+        }
 
+        .nav-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.25rem;
+            color: rgb(142, 55, 55);
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            color: white;
+            position: relative;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        
+        }
+
+        .nav-links a:hover {
+            color: rgb(142, 55, 55);
+        }
+        
         .hero-label {
+
+        }
+
+        .hero {
+            display: flex;
+            height: 100vh;
+            background-color: rgb(28, 36, 44);
+
+        }
+
+        .page-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            justify-content: flex-start;
+            text-transform: 0.3s ease;
+        }
+
+        .page-nav a:hover {
+            color: rgb(142, 55, 55);
+        }
+
+
+
+
     </style>
 </head>
 
@@ -25,11 +95,11 @@
     <canvas id="starfield"></canvas>
 
     <nav>
-        <a href="index.html" class="nav-logo">Astrofysikk</a>
+        <a href="universe.html" class="nav-logo">ASTROFYSIKK</a>
         <ul class="nav-links">
-            <li><a href="index.html">Universet</a></li>
-            <li><a href="stjerner.html">Stjerner</a></li>
-            <li><a href="svarthull.html" class="active">Svarte Hull</a></li>
+            <li><a href="universe.html">Universet</a></li>
+            <li><a href="stars.html">Stjerner</a></li>
+            <li><a href="blackhole.html" class="active">Svarte Hull</a></li>
         </ul>
     </nav>
 
