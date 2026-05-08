@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+    </style>
+</head>
+
+<body>
+    <canvas id="starfield"></canvas>
+
+    <nav>
+        <a href="index.html" class="nav-logo">Astrofysikk</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Universet</a></li>
+            <li><a href="stjerner.html">Stjerner</a></li>
+            <li><a href="svarthull.html" class="active">Svarte Hull</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <p class="hero-label">03 — Svarte Hull</p>
+        <h1>Der rom og tid slutter </h1>
+        <p class="hero-sub">Svarte hull er de mest ekstreme objektene i universet — steder der gravitasjonen er så sterk
+            at ikke engang lys kan unnslippe. De bøyer rom-tid og utfordrer vår forståelse av fysikkens lover.</p>
+    </section>
+
+    <div class="bh-section">
+        <canvas id="bhCanvas" width="400" height="400"></canvas>
+        <p>Hendelseshorisonten er den usynlige grensen rundt et svart hull. Krysser du den, er veien tilbake umulig —
+            selv for lys. Schwarzschildradien definerer denne grensen matematisk.</p>
+        <p>Innerst sitter singulariteten, et punkt der tettheten teoretisk sett er uendelig og rom-tid brytes ned. Her
+            feiler Einsteins relativitetsteori, og vi trenger en kvantegravitasjonsteori.</p>
+        <p>Akkresjonsskiven er gass og støv som faller inn mot hullet og glødende varmes opp til millioner av grader, og
+            sender ut røntgenstråling vi kan detektere fra Jorden.</p>
+    </div>
+    </div>
+
+    <section class="concepts">
+        <p class="section-number">02 — Nøkkelbegreper</p>
+        <h2>Fysikk i det ekstreme</h2>
+        <div class="divider"></div>
+        <div class="concepts-grid">
+            <div class="concept">
+                <span class="concept-icon"></span>
+                <h3>Singularitet</h3>
+                <div class="sub">Massens endepunkt</div>
+                <p>Et matematisk punkt der volum er null og tetthet er uendelig. Her slutter vår nåværende fysikk å
+                    gjelde.</p>
+            </div>
+            <div class="concept" style="transition-delay: 0.15s;">
+                <span class="concept-icon"></span>
+                <h3>Spaghettifisering</h3>
+                <div class="sub">Tidevannsstrekking</div>
+                <p>Nær et svart hull er gravitasjonen sterkere ved føttene enn hodet — kroppen strekkes ut som
+                    spaghetti.</p>
+            </div>
+            <div class="concept" style="transition-delay: 0.3s;">
+                <span class="concept-icon"></span>
+                <h3>Hawking-stråling</h3>
+                <div class="sub">Kvantemekanisk fordampning</div>
+                <p>Stephen Hawking viste at svarte hull langsomt avgir energi via kvanteeffekter og til slutt fordamper
+                    fullstendig.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="quote-section">
+        <p>
+            "Svarte hull er der Gud deler med null"
+        </p>
+        <p class="quote-author">— Albert Einstein, generell relativitetsteori 1915</p>
+    </div>
+
+    <section class="data-section">
+        <p class="section-number">03 — Kjente svarte hull</p>
+        <h2>Virkelige monstre</h2>
+        <div class="divider"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Navn</th>
+                    <th>Masse</th>
+                    <th>Avstand fra Jorden</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Sagittarius A*</td>
+                    <td>4 mill. ☉</td>
+                    <td>26 000 lysår (sentrum av Melkeveien)</td>
+                </tr>
+                <tr>
+                    <td>M87*</td>
+                    <td>6,5 mrd. ☉</td>
+                    <td>53 mill. lysår — første svarte hull fotografert (2019)</td>
+                </tr>
+                <tr>
+                    <td>TON 618</td>
+                    <td>66 mrd. ☉</td>
+                    <td>10,4 mrd. lysår — ett av de mest massive kjente</td>
+                </tr>
+                <tr>
+                    <td>Cygnus X-1</td>
+                    <td>21 ☉</td>
+                    <td>6 000 lysår — første sterkt bekreftede svarte hull</td>
+                </tr>
+                <tr>
+                    <td>GW150914</td>
+                    <td>~62 ☉ (etter fusjon)</td>
+                    <td>1,3 mrd. lysår — produserte gravitasjonsbølger oppdaget av LIGO</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="page-nav">
+        <a href="stjerner.html">
+            <div class="arrow">←</div>
+            <div>
+                <span>Forrige side</span><br>
+                Stjernenes liv
+            </div>
+        </a>
+    </div>
+
+</body>
+
+</html>

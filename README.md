@@ -1,2 +1,0 @@
-# Astrofysikk
-ya
