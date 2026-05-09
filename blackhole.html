@@ -5,41 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astrofysikk - Svarte Hull</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
-
         :root {
-            
+            --bg: #030510;
+            --gold: #c9a84c;
+            --gold-dim: #8a6a28;
+            --white: #f0eee8;
+            --grey: #8a8fa0;
+
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        body {
+            background-color: var(--bg);
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
         a {
             text-decoration: none;
             color: inherit;
         }
-        
+
         nav {
             color: white;
             display: flex;
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             align-items: center;
             justify-content: space-between;
             background-color: black;
             padding: 1rem 2rem;
-        
+
         }
 
         .nav-logo {
             font-family: 'Space Mono', monospace;
             font-size: 0.75rem;
-            letter-spacing: 0.25rem;
+            letter-spacing: 0.25em;
             color: rgb(142, 55, 55);
         }
+
         .nav-links {
             list-style: none;
             display: flex;
@@ -53,21 +69,62 @@
             position: relative;
             text-transform: uppercase;
             transition: color 0.3s ease;
-        
+
         }
 
         .nav-links a:hover {
             color: rgb(142, 55, 55);
         }
-        
-        .hero-label {
 
+        .hero-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.25rem;
         }
 
         .hero {
             display: flex;
             height: 100vh;
-            background-color: rgb(28, 36, 44);
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 0 8vw;
+            text-align: right;
+
+        }
+
+        .hero-sub {
+            max-width: 460px;
+            margin-top: 2rem;
+            color: var(--grey);
+            font-size: 1.15rem;
+            font-weight: 300;
+            line-height: 1.7;
+            opacity: 0;
+            animation: fadeUp 1s 0.7s forwards;
+
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 9vw;
+            font-weight: 300;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
 
         }
 
@@ -83,11 +140,40 @@
 
         .page-nav a:hover {
             color: rgb(142, 55, 55);
+
         }
 
+        .bh-section {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+            padding: 6rem 8vw;
+            z-index: 1;
 
+        }
 
+        .bh-text h2 {
+            font-size: clamp(1.8rem, 4vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
 
+        #bhCanvas {
+            width: 100%;
+            background-color: blue;
+            display: block;
+        }
+
+        .bh-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--grey);
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+
+        }
     </style>
 </head>
 
@@ -105,20 +191,25 @@
 
     <section class="hero">
         <p class="hero-label">03 — Svarte Hull</p>
-        <h1>Der rom og tid slutter </h1>
+        <h1>Der tid<br>og rom<br><em>slutter</em> </h1>
         <p class="hero-sub">Svarte hull er de mest ekstreme objektene i universet — steder der gravitasjonen er så sterk
             at ikke engang lys kan unnslippe. De bøyer rom-tid og utfordrer vår forståelse av fysikkens lover.</p>
     </section>
 
     <div class="bh-section">
         <canvas id="bhCanvas" width="400" height="400"></canvas>
-        <p>Hendelseshorisonten er den usynlige grensen rundt et svart hull. Krysser du den, er veien tilbake umulig —
+        <div class="bh-text">
+            <p class="section-number">01 – Struktur</p>
+            <h2>Hendelseshorisonten</h2>
+            <div class="divide"></div>
+                <p>Hendelseshorisonten er den usynlige grensen rundt et svart hull. Krysser du den, er veien tilbake umulig —
             selv for lys. Schwarzschildradien definerer denne grensen matematisk.</p>
-        <p>Innerst sitter singulariteten, et punkt der tettheten teoretisk sett er uendelig og rom-tid brytes ned. Her
+
+                <p>Innerst sitter singulariteten, et punkt der tettheten teoretisk sett er uendelig og rom-tid brytes ned. Her
             feiler Einsteins relativitetsteori, og vi trenger en kvantegravitasjonsteori.</p>
-        <p>Akkresjonsskiven er gass og støv som faller inn mot hullet og glødende varmes opp til millioner av grader, og
+             <p>Akkresjonsskiven er gass og støv som faller inn mot hullet og glødende varmes opp til millioner av grader, og
             sender ut røntgenstråling vi kan detektere fra Jorden.</p>
-    </div>
+        </div>
     </div>
 
     <section class="concepts">
