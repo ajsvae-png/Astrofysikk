@@ -104,14 +104,14 @@
             font-weight: 300;
             line-height: 1.7;
             opacity: 0;
-            animation: fadeUp 1s 0.7s forwards;
+            animation: fadeUp 1s 0.7s forwards; /* animation */
 
         }
 
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(20px); /* moves upward the y-axis */
             }
 
             to {
@@ -174,6 +174,57 @@
             font-weight: 300;
 
         }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background-color: var(--gold);
+            margin: 1.5rem 0.2rem;
+        }
+
+        .concepts {
+            position: relative;
+            z-index: 1;
+            padding: 5rem 8vw;
+        }
+
+        .concepts h2 {
+            font-size: 5vw;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+        }
+
+        .concept {
+            background-color: rgba(255,255,255,0.02);
+            padding: 3rem 2rem;
+            border:1px solid rgba(255,255,255,0.04);
+            transition: background 0.3s; /* override */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s, background 0.3s;
+        }
+
+        .concept.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .concept:hover {
+            background-color: rgba(255,255,255,0.04);
+        }
+
+        .concept-icon {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            display: block; /* tar over hele linjen */
+
+        }
     </style>
 </head>
 
@@ -207,6 +258,7 @@
 
                 <p>Innerst sitter singulariteten, et punkt der tettheten teoretisk sett er uendelig og rom-tid brytes ned. Her
             feiler Einsteins relativitetsteori, og vi trenger en kvantegravitasjonsteori.</p>
+
              <p>Akkresjonsskiven er gass og støv som faller inn mot hullet og glødende varmes opp til millioner av grader, og
             sender ut røntgenstråling vi kan detektere fra Jorden.</p>
         </div>
@@ -214,25 +266,25 @@
 
     <section class="concepts">
         <p class="section-number">02 — Nøkkelbegreper</p>
-        <h2>Fysikk i det ekstreme</h2>
+        <h2>Fysikk i<br>det ekstreme</h2>
         <div class="divider"></div>
         <div class="concepts-grid">
             <div class="concept">
-                <span class="concept-icon"></span>
+                <span class="concept-icon">😋</span>
                 <h3>Singularitet</h3>
                 <div class="sub">Massens endepunkt</div>
                 <p>Et matematisk punkt der volum er null og tetthet er uendelig. Her slutter vår nåværende fysikk å
                     gjelde.</p>
             </div>
             <div class="concept" style="transition-delay: 0.15s;">
-                <span class="concept-icon"></span>
+                <span class="concept-icon">😋</span>
                 <h3>Spaghettifisering</h3>
                 <div class="sub">Tidevannsstrekking</div>
                 <p>Nær et svart hull er gravitasjonen sterkere ved føttene enn hodet — kroppen strekkes ut som
                     spaghetti.</p>
             </div>
             <div class="concept" style="transition-delay: 0.3s;">
-                <span class="concept-icon"></span>
+                <span class="concept-icon">😋</span>
                 <h3>Hawking-stråling</h3>
                 <div class="sub">Kvantemekanisk fordampning</div>
                 <p>Stephen Hawking viste at svarte hull langsomt avgir energi via kvanteeffekter og til slutt fordamper
@@ -299,6 +351,25 @@
             </div>
         </a>
     </div>
+
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+
+        (function() {
+            const items = document.querySelectorAll('.concept');
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            items.forEach(item => io.observe(item)); /* observes each concept item */
+
+        }());
+    </script>
 
 </body>
 
