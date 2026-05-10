@@ -18,34 +18,45 @@
 
         }
 
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg);
             color: var(--white);
             font-family: 'Cormorant Garamond', serif;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
+            overflow-x: hidden;
         }
 
         nav {
-            color: white;
             display: flex;
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: fixed;
+            top: 0; 
+            left: 0; 
             right: 0;
+            z-index: 100;
             align-items: center;
             justify-content: space-between;
-            background-color: black;
-            padding: 1rem 2rem;
+            background: linear-gradient(to bottom, rgba(3,5,15,0.9), transparent);
+            backdrop-filter: blur(2px);
+            padding: 1.4rem 3rem;
 
         }
 
@@ -53,35 +64,45 @@
             font-family: 'Space Mono', monospace;
             font-size: 0.75rem;
             letter-spacing: 0.25em;
-            color: rgb(142, 55, 55);
+            color: var(--gold);
+            text-transform: uppercase;
+            text-decoration: none;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             font-family: 'Space Mono', monospace;
             font-size: 0.65rem;
-            color: white;
-            position: relative;
+            color: var(--grey);
+            letter-spacing: 0.2em;
+            text-decoration: none;
             text-transform: uppercase;
-            transition: color 0.3s ease;
+            transition: color 0.3s;
 
         }
 
         .nav-links a:hover {
-            color: rgb(142, 55, 55);
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
         }
 
         .hero-label {
             font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--gold-dim);
+            font-size: 0.65rem;
+            color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 0.25rem;
+            letter-spacing: 0.35em;
+            opacity: 0;
+            margin-bottom: 1.5rem;
+            animation: fadeUp 1s 0.3s forwards; /* animation */
         }
 
         .hero {
@@ -93,6 +114,7 @@
             align-items: flex-end;
             padding: 0 8vw;
             text-align: right;
+            z-index: 1;
 
         }
 
@@ -121,26 +143,66 @@
         }
 
         .hero h1 {
-            font-size: 9vw;
+            font-size: clamp(3.5rem, 9vw, 9rem);
             font-weight: 300;
             line-height: 0.95;
             letter-spacing: -0.02em;
+            opacity: 0;
+            animation: fadeUp 1s 0.5s forwards; /* animation */
 
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: italic; /* default */
         }
 
         .page-nav {
             display: flex;
-            justify-content: space-between;
-            padding: 2rem;
+            justify-content: flex-start;
+            padding: 3rem 8vw 4rem;
             position: relative;
             z-index: 1;
-            justify-content: flex-start;
-            text-transform: 0.3s ease;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .page-nav a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--white);
+            transition: color 0.3s ease;
+            text-decoration: none;
+            font-size: 1.2rem;
+
         }
 
         .page-nav a:hover {
-            color: rgb(142, 55, 55);
+            color: var(--gold);
+        }
 
+        .arrow {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s, border-color 0.3s;
+
+        }
+
+        .page-nav a:hover .arrow {
+            background-color: rgba(201, 168, 76, 0.1);
+            border-color: var(--gold);
+        }
+        .page-nav a span {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            color: var(--grey);
+            text-transform: uppercase;
         }
 
         .bh-section {
@@ -153,7 +215,14 @@
             z-index: 1;
 
         }
-
+        .section-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--gold-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 0.75rem;
+        }
         .bh-text h2 {
             font-size: clamp(1.8rem, 4vw, 3.5rem);
             font-weight: 300;
@@ -204,7 +273,6 @@
             background-color: rgba(255,255,255,0.02);
             padding: 3rem 2rem;
             border:1px solid rgba(255,255,255,0.04);
-            transition: background 0.3s; /* override */
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s, transform 0.6s, background 0.3s;
@@ -215,16 +283,127 @@
             transform: translateY(0);
         }
 
+        .concept h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
         .concept:hover {
             background-color: rgba(255,255,255,0.04);
         }
 
+        .concept .sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.58rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+        }
+
+        .concept p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--grey);
+        }
         .concept-icon {
             font-size: 2rem;
             margin-bottom: 1.2rem;
             display: block; /* tar over hele linjen */
 
         }
+
+        .quote-section {
+            position: relative;
+            padding: 6rem 8vw;
+            text-align: center;
+            z-index: 1;
+
+        }
+
+        .quote-section blockquote {
+            font-size: clamp(1.8rem, 4vw, 3.2rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.35;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-section blockquote em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .quote-author {
+            font-family: 'space Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--grey);
+            margin-top: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+        }
+
+        .data-section {
+            position: relative;
+            z-index: 1;
+            padding: 5rem 8vw;
+        }
+
+        .data-section h2 {
+            font-size: 5vw;
+            font-weight: 300;
+            margin-bottom: 3rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead tr {
+            border-bottom: 1px solid rgba(201,168,76,0.3);
+        }
+
+        thead th {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            text-transform: uppercase;
+            padding: 0.8rem 1rem;
+            text-align: left;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: background 0.3s;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(255,255,255,0.03);
+        }
+
+        tbody td {
+            padding: 1.2rem 1rem;
+            font-size: 1rem;
+            color: var(--white);
+        }   
+
+        tbody td:nth-child(2) {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+
+        }
+
+        tbody td:nth-child(3) {
+            font-size: 0.9rem;
+            color: var(--grey);
+
+        }
+
+
     </style>
 </head>
 
@@ -242,7 +421,7 @@
 
     <section class="hero">
         <p class="hero-label">03 — Svarte Hull</p>
-        <h1>Der tid<br>og rom<br><em>slutter</em> </h1>
+        <h1>Der rom<br>og tid<br><em>slutter</em></h1>
         <p class="hero-sub">Svarte hull er de mest ekstreme objektene i universet — steder der gravitasjonen er så sterk
             at ikke engang lys kan unnslippe. De bøyer rom-tid og utfordrer vår forståelse av fysikkens lover.</p>
     </section>
@@ -252,7 +431,7 @@
         <div class="bh-text">
             <p class="section-number">01 – Struktur</p>
             <h2>Hendelseshorisonten</h2>
-            <div class="divide"></div>
+            <div class="divider"></div>
                 <p>Hendelseshorisonten er den usynlige grensen rundt et svart hull. Krysser du den, er veien tilbake umulig —
             selv for lys. Schwarzschildradien definerer denne grensen matematisk.</p>
 
@@ -294,25 +473,25 @@
     </section>
 
     <div class="quote-section">
-        <p>
-            "Svarte hull er der Gud deler med null"
-        </p>
+       <blockquote>
+            "Svarte hull er der <em>Gud deler med null</em>"
+        </blockquote>
         <p class="quote-author">— Albert Einstein, generell relativitetsteori 1915</p>
     </div>
 
     <section class="data-section">
         <p class="section-number">03 — Kjente svarte hull</p>
-        <h2>Virkelige monstre</h2>
+        <h2>Virkelige <br> monstre</h2>
         <div class="divider"></div>
         <table>
-            <thead>
+            <thead>  <!-- Table header -->
                 <tr>
                     <th>Navn</th>
                     <th>Masse</th>
                     <th>Avstand fra Jorden</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> <!-- Table body -->
                 <tr>
                     <td>Sagittarius A*</td>
                     <td>4 mill. ☉</td>
