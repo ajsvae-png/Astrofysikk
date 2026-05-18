@@ -1,18 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Stjerner</title>
 
     <style>
-       :root {
+        :root {
             --bg: #030510;
             --gold: #c9a84c;
             --gold-dim: #8a6a28;
             --white: #f0eee8;
             --grey: #8a8fa0;
+            --accent: #4a7fa5;
 
+        }
+
+        nav {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(to bottom, rgba(3, 5, 15, 0.9), transparent);
+            backdrop-filter: blur(2px);
+            padding: 1.4rem 3rem;
+
+        }
+
+        .nav-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            color: var(--gold);
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .types-section {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 8vw;
+            /* horisontal, vertical */
+   
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            opacity: 0.7s, transform 0.7s;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-links a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--grey);
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s;
+
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a.active {
+            color: var(--gold);
+        }
+
+        .hero {
+            psi
         }
 
         #starfield {
@@ -23,6 +103,13 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 1.5rem 0 3rem;
         }
 
         * {
@@ -42,12 +129,77 @@
             overflow-x: hidden;
         }
 
+        .page-nav {
+            display: flex;
+            z-index: 1;
+            justify-content: space-between;
+            padding: 3rem 8vw 4rem;
+            /* top, right/left, bottom.. */
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .page-nav a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            text-decoration: none;
+            color: var(--white);
+        }
     </style>
 </head>
+
 <body>
     <canvas id="starfield"></canvas>
+
+    <nav>
+        <a href="universe.html" class="nav-logo"> Astrofysikk</a>
+        <ul class="nav-links">
+            <li><a href="universe.html">Universe</a></li>
+            <li><a href="stars.html">Stjerner</a></li>
+            <li><a href="blackhole.html">Svarte hull</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <p class="hero-label">02 – Stjerner</p>
+        <h1>Kosmiske<br><em>smelteovner</em></h1>
+        <p class="hero-sub">Stjerner er universets byggesteiner (?). De smelter lette atomer til tyngre grunnstoffer, og
+            kaster dem ut i verdensrommet når de dør – selve råstoffet for planeter og liv.</p>
+
+    </section>
+
+
+    <section class="types-section fade-in">
+        <p class="section-number"> 01 – Spektralklasser</p>
+        <h2>Typer av<br>stjerner</h2>
+        <div class="divider"></div>
+    </section>
+    <section></section>
+
+
+    <div class="page-nav">
+        <a href="universe.html">
+            <div class="arrow">←</div>
+            <div>
+                <span>Forrige side</span><br>
+                Universet
+            </div>
+        </a>
+        <a href="svartehull.html">
+            <div>
+                <span>Neste side</span><br>
+                Svarte hull
+            </div>
+            <div class="arrow">→</div>
+        </a>
+    </div>
+
+
     <script>
-          (function () {
+        (function () {
             const canvas = document.getElementById("starfield");
             const ctx = canvas.getContext("2d");
 
@@ -91,9 +243,10 @@
             draw();
 
             window.addEventListener("resize", resize);
-            
+
         })();
 
     </script>
 </body>
+
 </html>
